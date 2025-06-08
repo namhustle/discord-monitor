@@ -1,0 +1,14 @@
+networks:
+  health_monitor_network:
+    name: health_monitor_network
+    driver: bridge
+
+services:
+  health_monitor:
+    container_name: health_monitor
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./servers.yaml:/app/servers.yaml:ro
+    networks:
+      - health_monitor_network

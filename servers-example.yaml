@@ -1,0 +1,9 @@
+- name: Your server 1
+  healthCheckUrl: your-health-check-url
+  discordWebhook: your-discord-webhook
+  timeout: 10000
+
+- name: Your server 2
+  healthCheckUrl: your-health-check-url
+  discordWebhook: your-discord-webhook
+  timeout: 10000
