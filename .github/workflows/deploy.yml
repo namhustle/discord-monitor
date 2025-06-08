@@ -1,0 +1,28 @@
+# .github/workflows/deploy.yml
+
+name: Deploy discord-monitor to EC2
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull latest code
+        run: |
+          cd ~/discord-monitor
+          git reset --hard
+          git pull origin main
+
+      - name: Rebuild and restart container
+        run: |
+          cd ~/discord-monitor
+          docker compose down
+          docker compose up -d --build
+
+      - name: Show status
+        run: |
+          docker ps
